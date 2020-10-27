@@ -44,7 +44,7 @@ volumes:
         driver: local
         driver_opts:
             type: none
-            device: /home/derekbroadwater/web/views/
+            device: /home/daemon/web/views/
             o: bind
 
 networks:
