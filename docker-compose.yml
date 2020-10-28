@@ -36,13 +36,13 @@ services:
             - 443:443
         volumes:
             - type: bind
-                source: ./configs/htpasswd # we assume db.example.com file is in this folder on a host computer
-                target: /etc/nginx/htpasswd
-                read_only: true
+            source: ./configs/htpasswd # we assume db.example.com file is in this folder on a host computer
+            target: /etc/nginx/htpasswd
+            read_only: true
             - type: bind
-                source: /var/run/docker.sock
-                target: /tmp/docker.sock
-                read_only: true
+            source: /var/run/docker.sock
+            target: /tmp/docker.sock
+            read_only: true
         labels:
             - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy=true"
           
