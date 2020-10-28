@@ -10,11 +10,7 @@ router.use(function (req,res,next) {
   next();
 });
 
-router.get('/uj47G/',function(req,res){
-  res.sendFile(path + 'index.html');
-});
-
-router.get('/uj47G',function(req,res){
+router.get('/',function(req,res){
   res.sendFile(path + 'index.html');
 });
 
