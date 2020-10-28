@@ -47,7 +47,7 @@ volumes:
         driver: local
         driver_opts:
             type: none
-            device: /home/dhb220/tech_task/views/
+            device: /tech_task/views/
             o: bind
     dhparam:
         driver: local
