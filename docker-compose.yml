@@ -35,7 +35,7 @@ services:
             - 5043:443
         links:
             - registry:registry
-        voleumes:
+        volumes:
             - ./auth:/etc/nginx/conf.d
             - ./auth/nginx.conf:/etc/nginx/nginx.conf:ro
 
