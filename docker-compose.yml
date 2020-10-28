@@ -44,7 +44,7 @@ volumes:
         driver: local
         driver_opts:
             type: none
-            device: /home/dhb220/web/views/
+            device: "/home/dhb220/web/views/"
             o: bind
 
 networks:
