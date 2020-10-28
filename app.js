@@ -14,6 +14,18 @@ router.get('/',function(req,res){
   res.sendFile(path + 'index.html');
 });
 
+router.get('/uj47G/',function(req,res){
+  res.sendFile(path + 'index.html');
+});
+
+router.get('/uj47G',function(req,res){
+  res.sendFile(path + 'index.html');
+});
+
+router.get('uj47G',function(req,res){
+  res.sendFile(path + 'index.html');
+});
+
 app.use(express.static(path));
 app.use('/', router);
 
