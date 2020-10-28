@@ -1,4 +1,5 @@
 version: '3'
+
 services:
     nodejs:
         build:
@@ -16,6 +17,7 @@ services:
         restart: unless-stopped
         ports:
             - "80:80"
+            - "443:443"
         volumes:
             - web-root:/var/www/html
             - ./nginx-conf:/etc/nginx/conf.d
@@ -44,7 +46,7 @@ volumes:
         driver: local
         driver_opts:
             type: none
-            device: "/home/dhb220/web/views/"
+            device: /home/dhb220/tech_task/views/
             o: bind
 
 networks:
