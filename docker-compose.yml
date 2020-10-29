@@ -64,9 +64,9 @@ services:
             - /opt/docker/registry/auth:/auth
             - /opt/docker/ssl/letsencrypt-nginx-sidecar/sidecar/certs/domain.example.com:/certs
         
-        portainer:
-            image: portainer/portainer-ce 
-            command: --ssl --sslcert /certs/fullchain.pem --sslkey /certs/key.pem
+    portainer:
+        image: portainer/portainer-ce 
+        command: --ssl --sslcert /certs/fullchain.pem --sslkey /certs/key.pem
         environment:
             VIRTUAL_PORT: 9000
             VIRTUAL_HOST: docker.cmpartners.biz
