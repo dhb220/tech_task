@@ -40,6 +40,45 @@ services:
             - webserver
         command: certonly --webroot --webroot-path=/var/www/html --email dhb220@gmail.com --agree-tos --no-eff-email --force-renewal -d docker.cmpartners.biz  -d www.docker.cmpartners.biz
 
+    registry:
+        restart: always
+        image: registry:2
+        ports:
+            - 5000:5000
+            environment:
+              REGISTRY_AUTH: htpasswd
+              REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+              REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+              REGISTRY_HTTP_TLS_CERTIFICATE: /certs/fullchain.pem
+              REGISTRY_HTTP_TLS_KEY: /certs/key.pem
+              # Set to the port that your webapp listens on
+              VIRTUAL_PORT: 5000
+              # Can be comma-separated list
+              VIRTUAL_HOST: docker.cmpartners.biz
+              # The domain for the cert, can also be comma-separated
+              LETSENCRYPT_HOST: docker.cmpartners.biz
+              # Your email for the cert
+              LETSENCRYPT_EMAIL: dhb220@gmail.com
+            volumes:
+              - /opt/docker/registry/data:/var/lib/registry
+              - /opt/docker/registry/auth:/auth
+              - /opt/docker/ssl/letsencrypt-nginx-sidecar/sidecar/certs/domain.example.com:/certs
+        
+          portainer:
+            image: portainer/portainer
+            command: --ssl --sslcert /certs/fullchain.pem --sslkey /certs/key.pem
+            environment:
+              VIRTUAL_PORT: 9000
+              VIRTUAL_HOST: docker.cmpartners.biz
+              LETSENCRYPT_HOST: docker.cmpartners.biz
+              LETSENCRYPT_EMAIL: dhb220@gmail.com
+            volumes:
+              - /opt/docker/portainer:/data
+              - /var/run/docker.sock:/var/run/docker.sock
+              - /opt/docker/ssl/letsencrypt-nginx-sidecar/sidecar/certs/domain.example.com:/certs
+            ports:
+              - "9000:9000"
+
 volumes:
     certbot-etc:
     certbot-var:
@@ -58,6 +97,10 @@ volumes:
 networks:
     app-network:
         driver: bridge
+    default:
+        external:
+            name: letsencrypt    
+    
 
 
 
