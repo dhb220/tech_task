@@ -99,7 +99,7 @@ networks:
     app-network:
         driver: bridge
     outside:
-        external: true
+        external:
             name: letsencrypt
           
     
