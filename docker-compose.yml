@@ -98,9 +98,10 @@ volumes:
 networks:
     app-network:
         driver: bridge
-    default:
-        external:
-            name: letsencrypt    
+    outside:
+        external: true
+            name: letsencrypt
+          
     
 
 
