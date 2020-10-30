@@ -10,7 +10,6 @@ services:
         restart: unless-stopped
         networks:
           - app-network
-          - letsencrypt
 
     webserver:
         image: nginx:latest
