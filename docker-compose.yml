@@ -62,7 +62,7 @@ services:
         volumes:
             - /opt/docker/registry/data:/var/lib/registry
             - /opt/docker/registry/auth:/auth
-            - /opt/docker/ssl/letsencrypt-nginx-sidecar/sidecar/certs/domain.example.com:/certs
+            - /opt/docker/ssl/letsencrypt-nginx-sidecar/sidecar/certs/docker.cmpartners.biz:/certs
         
     portainer:
         image: portainer/portainer-ce 
@@ -75,7 +75,7 @@ services:
         volumes:
             - /opt/docker/portainer:/data
             - /var/run/docker.sock:/var/run/docker.sock
-            - /opt/docker/ssl/letsencrypt-nginx-sidecar/sidecar/certs/domain.example.com:/certs
+            - /opt/docker/ssl/letsencrypt-nginx-sidecar/sidecar/certs/docker.cmpartners.biz:/certs
         ports:
             - "9000:9000"
 
