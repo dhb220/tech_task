@@ -39,18 +39,6 @@ services:
         depends_on: 
             - webserver
         command: certonly --webroot --webroot-path=/var/www/html --email dhb220@gmail.com --agree-tos --no-eff-email --force-renewal -d docker.cmpartners.biz  -d www.docker.cmpartners.biz
-
-    registry:
-        restart: always
-        image: registry:2
-        ports:
-            - "5000:5000"
-        environment:
-            REGISTRY_AUTH: htpasswd
-            REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
-            REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
-        volumes:
-            - web-root:/var/www/html
         
 volumes:
     certbot-etc:
